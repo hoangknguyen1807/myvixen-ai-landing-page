@@ -31,8 +31,8 @@ export const nav = [
 ];
 
 export const secondary = [
-  { href: "/english", label: "English", image: "/images/usa-flag.png" },
-  { href: "/discord", label: "Discord", image: "/images/discord-logo.png" },
+  { href: "/", label: "English", image: "/images/usa-flag.png" },
+  { href: "/", label: "Discord", image: "/images/discord-logo.png" },
   { href: "/help", label: "Help Center", icon: HelpCircle },
   { href: "/contact", label: "Contact Us", icon: ContactRound },
   { href: "/achievements", label: "Achievements", icon: Award },
@@ -87,7 +87,7 @@ export function Sidebar() {
             const Icon = item.icon;
             return (
               <Link
-                key={item.href}
+                key={item.label}
                 href={item.href}
                 onClick={closeSidebar}
                 className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white">
@@ -102,7 +102,7 @@ export function Sidebar() {
             if (Icon) {
               return (
                 <Link
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
                   onClick={closeSidebar}
                   className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/10 hover:text-white">
@@ -114,7 +114,7 @@ export function Sidebar() {
             if (imgSrc) {
               return (
                 <Link
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
                   onClick={closeSidebar}
                   className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/10 hover:text-white">
@@ -140,7 +140,7 @@ export function Sidebar() {
             const Icon = item.icon;
             return (
               <Link
-                key={item.href}
+                key={item.label}
                 href={item.href}
                 className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white ${
                   isSidebarOpen
@@ -158,7 +158,7 @@ export function Sidebar() {
             if (Icon) {
               return (
                 <Link
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
                   className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/10 hover:text-white ${
                     isSidebarOpen
@@ -173,7 +173,7 @@ export function Sidebar() {
             if (imgSrc) {
               return (
                 <Link
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
                   className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/10 hover:text-white ${
                     isSidebarOpen
