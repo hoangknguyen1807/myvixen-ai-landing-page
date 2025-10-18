@@ -46,14 +46,14 @@ export function HeroCarousel() {
       <button
         aria-label="Scroll left"
         onClick={() => scrollByAmount("left")}
-        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white shadow hover:bg-black/60"
+        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white shadow hover:bg-black/60 cursor-pointer"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
       <button
         aria-label="Scroll right"
         onClick={() => scrollByAmount("right")}
-        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white shadow hover:bg-black/60"
+        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white shadow hover:bg-black/60 cursor-pointer"
       >
         <ChevronRight className="h-5 w-5" />
       </button>
@@ -66,7 +66,7 @@ export function HeroCarousel() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05 }}
-            className="relative h-40 sm:h-52 md:h-56 lg:h-60 flex-none min-w-[320px] sm:min-w-[560px] md:min-w-[680px] lg:min-w-[820px] max-w-full rounded-2xl overflow-hidden border border-white/10 cursor-pointer"
+            className="group relative h-40 sm:h-52 md:h-56 lg:h-60 flex-none min-w-[320px] sm:min-w-[560px] md:min-w-[680px] lg:min-w-[820px] max-w-full rounded-2xl overflow-hidden border border-white/10 cursor-pointer"
             onClick={() => goToNectar()}
             aria-label="Open nectar.ai"
             
@@ -79,6 +79,8 @@ export function HeroCarousel() {
               priority={index === 0}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20" />
+            {/* Hover overlay */}
+            <div className="pointer-events-none absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
             <div className="absolute inset-0 p-6 flex items-center">
               <div className="max-w-xl">
                 <h3 className="text-white text-2xl md:text-3xl font-semibold">

@@ -24,6 +24,8 @@ export function FantasyCard({ fantasy }: FantasyCardProps) {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+        {/* Hover overlay */}
+        <div className="pointer-events-none absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
         {fantasy.is_nsfw && (
           <Badge className="absolute right-2 top-2">
             <span className="text-primary">New</span>

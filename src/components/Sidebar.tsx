@@ -13,6 +13,7 @@ import {
   ContactRound,
   Award,
 } from "lucide-react";
+import Image from "next/image";
 
 export const nav = [
   { href: "/", label: "Home", icon: Home },
@@ -20,11 +21,13 @@ export const nav = [
   { href: "/collection", label: "Collection", icon: Shapes },
   { href: "/generate", label: "Generate Image", icon: ImageIcon },
   { href: "/create", label: "Create Character", icon: Zap },
-  { href: "/my-ai", label: "My Ai", icon: Crown },
+  { href: "/my-ai", label: "My AI", icon: Crown },
   { href: "/buy-tokens", label: "Buy Tokens", icon: Zap },
 ];
 
 export const secondary = [
+  { href: "/english", label: "English", image: "/images/usa-flag.png" },
+  { href: "/discord", label: "Discord", image: "/images/discord-logo.png" },
   { href: "/help", label: "Help Center", icon: HelpCircle },
   { href: "/contact", label: "Contact Us", icon: ContactRound },
   { href: "/achievements", label: "Achievements", icon: Award },
@@ -64,15 +67,31 @@ export function Sidebar() {
         <div className="mt-auto flex flex-col gap-2 p-3">
           {secondary.map(item => {
             const Icon = item.icon;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={closeSidebar}
-                className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/10 hover:text-white">
-                <Icon className="h-4 w-4" /> {item.label}
-              </Link>
-            );
+            if (Icon) {
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeSidebar}
+                  className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/10 hover:text-white">
+                  <Icon className="h-4 w-4" /> {item.label}
+                </Link>
+              );
+            }
+            const imgSrc = item.image;
+            if (imgSrc) {
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeSidebar}
+                  className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/10 hover:text-white">
+                  <Image src={imgSrc} alt={item.label} width={20} height={20} />{" "}
+                  {item.label}
+                </Link>
+              );
+            }
+            return null;
           })}
         </div>
       </aside>
@@ -83,7 +102,7 @@ export function Sidebar() {
           isSidebarOpen
             ? "border-white/10 lg:w-[220px]"
             : "border-transparent lg:w-0"
-        } bg-background/90 sticky top-14 h-[calc(100dvh-81px)] shrink-0 flex-col gap-3 overflow-y-auto overflow-x-hidden border-r p-3 transition-all duration-300`}>
+        } bg-background/90 sticky top-0 h-[calc(100dvh-81px)] shrink-0 flex-col gap-3 overflow-y-auto overflow-x-hidden border-r p-3 transition-all duration-300`}>
         <div className="flex flex-col gap-2">
           {nav.map(item => {
             const Icon = item.icon;
@@ -104,18 +123,37 @@ export function Sidebar() {
         <div className="mt-auto flex flex-col gap-2">
           {secondary.map(item => {
             const Icon = item.icon;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/10 hover:text-white ${
-                  isSidebarOpen
-                    ? "opacity-100"
-                    : "pointer-events-none opacity-0"
-                } transition-opacity`}>
-                <Icon className="h-4 w-4" /> {item.label}
-              </Link>
-            );
+            if (Icon) {
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/10 hover:text-white ${
+                    isSidebarOpen
+                      ? "opacity-100"
+                      : "pointer-events-none opacity-0"
+                  } transition-opacity`}>
+                  <Icon className="h-4 w-4" /> {item.label}
+                </Link>
+              );
+            }
+            const imgSrc = item.image;
+            if (imgSrc) {
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/10 hover:text-white ${
+                    isSidebarOpen
+                      ? "opacity-100"
+                      : "pointer-events-none opacity-0"
+                  } transition-opacity`}>
+                  <Image src={imgSrc} alt={item.label} width={24} height={24} />{" "}
+                  {item.label}
+                </Link>
+              );
+            }
+            return null;
           })}
         </div>
       </aside>
