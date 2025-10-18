@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { Card, CardContent } from "@/components/ui/Card";
 import { formatTimeLeft, goToNectar } from "@/lib/utils";
@@ -48,7 +48,9 @@ export function SaleTimerCard() {
         {/* Countdown chips */}
         <div className="mb-4 mt-4 grid w-full max-w-[220px] grid-cols-3 gap-2">
           <div className="rounded-lg bg-white/10 px-3 py-2 text-center">
-            <div className="text-base font-semibold leading-none" suppressHydrationWarning>
+            <div
+              className="text-base font-semibold leading-none"
+              suppressHydrationWarning>
               {(mounted ? hours : 0).toString().padStart(2, "0")}
             </div>
             <div className="mt-1 text-[10px] uppercase tracking-wide text-white/70">
@@ -56,7 +58,9 @@ export function SaleTimerCard() {
             </div>
           </div>
           <div className="rounded-lg bg-white/10 px-3 py-2 text-center">
-            <div className="text-base font-semibold leading-none" suppressHydrationWarning>
+            <div
+              className="text-base font-semibold leading-none"
+              suppressHydrationWarning>
               {(mounted ? minutes : 0).toString().padStart(2, "0")}
             </div>
             <div className="mt-1 text-[10px] uppercase tracking-wide text-white/70">
@@ -64,7 +68,9 @@ export function SaleTimerCard() {
             </div>
           </div>
           <div className="rounded-lg bg-white/10 px-3 py-2 text-center">
-            <div className="text-base font-semibold leading-none" suppressHydrationWarning>
+            <div
+              className="text-base font-semibold leading-none"
+              suppressHydrationWarning>
               {(mounted ? seconds : 0).toString().padStart(2, "0")}
             </div>
             <div className="mt-1 text-[10px] uppercase tracking-wide text-white/70">

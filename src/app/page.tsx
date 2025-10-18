@@ -41,11 +41,14 @@ export default function Home() {
       <Sidebar />
       <div className="mt-4 flex min-w-0 flex-1 flex-col gap-6">
         <HeroCarousel />
-        <div className={cn("pl-2 flex flex-col gap-y-3 lg:pl-0 lg:flex-row items-center justify-between pr-2")}>
+        <div
+          className={cn(
+            "flex flex-col items-center justify-between gap-y-3 pl-2 pr-2 lg:flex-row lg:pl-0"
+          )}>
           <h2 className="text-xl font-semibold text-white">
             <span className="text-primary">MyVixen AI</span> Characters
           </h2>
-          <div className="flex justify-center items-end gap-x-2">
+          <div className="flex items-end justify-center gap-x-2">
             <Button
               variant="outline"
               className={cn("cursor-pointer", isAllModels ? "bg-white/10" : "")}

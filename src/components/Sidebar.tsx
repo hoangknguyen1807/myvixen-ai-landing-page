@@ -55,7 +55,7 @@ export function Sidebar() {
         className={`bg-background/95 fixed left-0 top-0 z-50 h-full w-[260px] transform backdrop-blur transition-transform lg:hidden ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}>
-        <div className="flex flex-col items-start gap-y-2 p-4 lg:hidden border-b border-white/10">
+        <div className="flex flex-col items-start gap-y-2 border-b border-white/10 p-4 lg:hidden">
           <Button
             variant="outline"
             size="sm"
