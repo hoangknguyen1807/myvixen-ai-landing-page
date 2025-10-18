@@ -6,12 +6,25 @@
 }
 
 body {
-  font-family: var(--font-geist-sans), system-ui, -apple-system, Segoe UI, Roboto,
-    Ubuntu, Cantarell, Noto Sans, sans-serif;
+  font-family:
+    var(--font-geist-sans),
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Ubuntu,
+    Cantarell,
+    Noto Sans,
+    sans-serif;
 }
 
 .gradient-cta {
-  background-image: radial-gradient(100% 100% at 50% 0%, #ff7cab 0%, #fe5b82 60%, #ff3d7a 100%);
+  background-image: radial-gradient(
+    100% 100% at 50% 0%,
+    #ff7cab 0%,
+    #fe5b82 60%,
+    #ff3d7a 100%
+  );
 }
 
 .scrollbar-none::-webkit-scrollbar {

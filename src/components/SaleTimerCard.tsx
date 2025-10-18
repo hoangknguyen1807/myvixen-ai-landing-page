@@ -81,8 +81,8 @@ export function SaleTimerCard() {
 
         {/* CTA */}
         <Button
-          className="mt-4 w-full max-w-[100px] px-5 cursor-pointer"
-          onClick={(e) => {
+          className="mt-4 w-full max-w-[100px] cursor-pointer px-5"
+          onClick={e => {
             e.stopPropagation();
             goToNectar();
           }}>

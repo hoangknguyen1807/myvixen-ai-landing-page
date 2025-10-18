@@ -38,7 +38,10 @@ export function HeroCarousel() {
     const el = scrollRef.current;
     if (!el) return;
     const amount = Math.round(el.clientWidth * 0.5);
-    el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
+    el.scrollBy({
+      left: dir === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -46,64 +49,57 @@ export function HeroCarousel() {
       <button
         aria-label="Scroll left"
         onClick={() => scrollByAmount("left")}
-        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white shadow hover:bg-black/60 cursor-pointer"
-      >
+        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 text-white shadow hover:bg-black/60">
         <ChevronLeft className="h-5 w-5" />
       </button>
       <button
         aria-label="Scroll right"
         onClick={() => scrollByAmount("right")}
-        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white shadow hover:bg-black/60 cursor-pointer"
-      >
+        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full bg-black/40 p-2 text-white shadow hover:bg-black/60">
         <ChevronRight className="h-5 w-5" />
       </button>
-      <div ref={scrollRef} className="w-full overflow-x-auto scrollbar-none">
-        <div className="flex gap-4 min-w-0">
-        {slides.map((slide, index) => (
-          <motion.div
-            key={slide.id}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.05 }}
-            className="group relative h-40 sm:h-52 md:h-56 lg:h-60 flex-none min-w-[320px] sm:min-w-[560px] md:min-w-[680px] lg:min-w-[820px] max-w-full rounded-2xl overflow-hidden border border-white/10 cursor-pointer"
-            onClick={() => goToNectar()}
-            aria-label="Open nectar.ai"
-            
-          >
-            <Image
-              src={slide.image}
-              alt={slide.title}
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20" />
-            {/* Hover overlay */}
-            <div className="pointer-events-none absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-            <div className="absolute inset-0 p-6 flex items-center">
-              <div className="max-w-xl">
-                <h3 className="text-white text-2xl md:text-3xl font-semibold">
-                  {slide.title}
-                </h3>
+      <div ref={scrollRef} className="scrollbar-none w-full overflow-x-auto">
+        <div className="flex min-w-0 gap-4">
+          {slides.map((slide, index) => (
+            <motion.div
+              key={slide.id}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+              className="group relative h-40 min-w-[320px] max-w-full flex-none cursor-pointer overflow-hidden rounded-2xl border border-white/10 sm:h-52 sm:min-w-[560px] md:h-56 md:min-w-[680px] lg:h-60 lg:min-w-[820px]"
+              onClick={() => goToNectar()}
+              aria-label="Open nectar.ai">
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                className="object-cover"
+                priority={index === 0}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20" />
+              {/* Hover overlay */}
+              <div className="pointer-events-none absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+              <div className="absolute inset-0 flex items-center p-6">
+                <div className="max-w-xl">
+                  <h3 className="text-2xl font-semibold text-white md:text-3xl">
+                    {slide.title}
+                  </h3>
                   <Button
-                    className="mt-4 gap-2 cursor-pointer"
-                    onClick={(e) => {
+                    className="mt-4 cursor-pointer gap-2"
+                    onClick={e => {
                       e.stopPropagation();
                       goToNectar();
-                    }}
-                  >
-                  <Sparkles className="h-4 w-4" /> {slide.cta}
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
+                    }}>
+                    <Sparkles className="h-4 w-4" /> {slide.cta}
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>
   );
 }
-
-

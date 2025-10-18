@@ -17,11 +17,13 @@ npm run dev
 Open http://localhost:3000 with your browser.
 
 ## Tech
+
 - Next.js 15 (App Router)
 - Tailwind (via @tailwindcss/postcss API)
 - lucide-react icons
 
 ## Features
+
 - Header with tokens/profile buttons
 - Sidebar navigation
 - Hero banner carousel with CTA

@@ -34,6 +34,7 @@ export const fetchFantasies = async ({
       },
     });
     return response.data.fantasies as Fantasy[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log("fetchFantasies error:", error);
     throw new Error(error?.response?.data?.message || error?.message || error);

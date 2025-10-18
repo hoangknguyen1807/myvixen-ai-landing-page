@@ -1,10 +1,16 @@
 import { twMerge } from "tailwind-merge";
 
-export function cn(...classNames: Array<string | false | null | undefined>): string {
+export function cn(
+  ...classNames: Array<string | false | null | undefined>
+): string {
   return twMerge(classNames.filter(Boolean).join(" "));
 }
 
-export function formatTimeLeft(msRemaining: number): { hours: number; minutes: number; seconds: number } {
+export function formatTimeLeft(msRemaining: number): {
+  hours: number;
+  minutes: number;
+  seconds: number;
+} {
   const totalSeconds = Math.max(0, Math.floor(msRemaining / 1000));
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -24,4 +30,4 @@ export function ellipsizeText(text: string, maxLength: number = 15): string {
 
 export function goToNectar() {
   window.open("https://nectar.ai", "_blank", "noopener,noreferrer");
-};
+}

@@ -16,11 +16,8 @@ export function Badge({
         "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium",
         colorClasses,
         className
-      )}
-    >
+      )}>
       {children}
     </span>
   );
 }
-
-

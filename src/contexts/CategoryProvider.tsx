@@ -23,10 +23,10 @@ interface CategoryProviderProps {
   children: ReactNode;
 }
 
-const CategoryProvider: React.FC<CategoryProviderProps> = ({
-  children,
-}) => {
-  const [selectedCategory, setSelectedCategory] = useState<"male" | "female" | "anime">("female");
+const CategoryProvider: React.FC<CategoryProviderProps> = ({ children }) => {
+  const [selectedCategory, setSelectedCategory] = useState<
+    "male" | "female" | "anime"
+  >("female");
 
   return (
     <CategoryContext.Provider

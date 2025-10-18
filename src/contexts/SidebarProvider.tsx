@@ -25,12 +25,12 @@ export function SidebarProvider({ children }: { children: React.ReactNode }) {
       isSidebarOpen,
       openSidebar: () => setIsSidebarOpen(true),
       closeSidebar: () => setIsSidebarOpen(false),
-      toggleSidebar: () => setIsSidebarOpen((v) => !v),
+      toggleSidebar: () => setIsSidebarOpen(v => !v),
     }),
     [isSidebarOpen]
   );
 
-  return <SidebarContext.Provider value={value}>{children}</SidebarContext.Provider>;
+  return (
+    <SidebarContext.Provider value={value}>{children}</SidebarContext.Provider>
+  );
 }
-
-
