@@ -23,7 +23,9 @@ export function Header() {
               onClick={toggleSidebar}>
               <Menu className="h-5 w-5" />
             </button>
-            <Link href="/" className="text-lg font-semibold text-white">
+            <Link
+              href="/"
+              className="hidden text-lg font-semibold text-white lg:block">
               <Image
                 src="/images/logo.png"
                 alt="MyVixenAI Logo"
@@ -31,7 +33,17 @@ export function Header() {
                 height={50}
               />
             </Link>
-            <Link href="/" className="">
+            <Link href="/" className="lg:hidden">
+              <span className="relative block h-[40px] w-[100px] shrink-0">
+                <Image
+                  src="/images/brand-name.png"
+                  alt="MyVixenAI"
+                  width={100}
+                  height={40}
+                />
+              </span>
+            </Link>
+            <Link href="/" className="hidden lg:block">
               <Image
                 src="/images/brand-name.png"
                 alt="MyVixenAI"
@@ -40,7 +52,7 @@ export function Header() {
               />
             </Link>
           </div>
-          <nav className="ml-8 h-full items-center gap-6 text-sm text-white/70 md:flex">
+          <nav className="ml-8 flex h-full items-center gap-x-3 text-sm text-white/70 md:gap-6">
             <div className="relative inline-flex flex-col items-center justify-between">
               <span
                 className={cn(
@@ -82,7 +94,7 @@ export function Header() {
             </div>
           </nav>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="hidden items-center gap-2 lg:flex">
           <Button
             variant="outline"
             size="sm"

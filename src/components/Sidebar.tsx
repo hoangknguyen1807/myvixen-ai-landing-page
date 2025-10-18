@@ -8,12 +8,17 @@ import {
   Image as ImageIcon,
   Shapes,
   Zap,
+  Coins,
   Crown,
   HelpCircle,
   ContactRound,
   Award,
+  User2,
+  X,
 } from "lucide-react";
 import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { goToNectar } from "@/lib/utils";
 
 export const nav = [
   { href: "/", label: "Home", icon: Home },
@@ -50,6 +55,33 @@ export function Sidebar() {
         className={`bg-background/95 fixed left-0 top-0 z-50 h-full w-[260px] transform backdrop-blur transition-transform lg:hidden ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}>
+        <div className="flex flex-col items-start gap-y-2 p-4 lg:hidden border-b border-white/10">
+          <Button
+            variant="outline"
+            size="sm"
+            className="cursor-pointer gap-2"
+            onClick={() => goToNectar()}>
+            <Coins className="h-4 w-4" />
+            Tokens 284
+          </Button>
+          <Button
+            variant="secondary"
+            size="sm"
+            className="cursor-pointer gap-2"
+            onClick={() => goToNectar()}>
+            <User2 className="h-4 w-4" /> My Profile
+          </Button>
+        </div>
+        {/* Mobile close button */}
+        <div className="absolute right-0 top-0 flex w-full items-center justify-end pr-1 pt-2">
+          <button
+            type="button"
+            aria-label="Close sidebar"
+            onClick={closeSidebar}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-transparent text-white hover:bg-white/20">
+            <X className="h-5 w-5" />
+          </button>
+        </div>
         <div className="flex flex-col gap-2 p-3">
           {nav.map(item => {
             const Icon = item.icon;

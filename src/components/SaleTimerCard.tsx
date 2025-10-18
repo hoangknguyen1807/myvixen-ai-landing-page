@@ -11,6 +11,7 @@ const SESSION_COOKIE_KEY = "sale_timer_start";
 const DURATION_MS = 30 * 60 * 1000; // 30 minutes
 
 function getOrInitStart(): number {
+  if (typeof window === "undefined") return 0;
   const existing = Cookies.get(SESSION_COOKIE_KEY);
   if (existing) return Number(existing);
   const now = Date.now();
@@ -19,15 +20,24 @@ function getOrInitStart(): number {
 }
 
 export function SaleTimerCard() {
-  const start = useMemo(getOrInitStart, []);
-  const [now, setNow] = useState(Date.now());
+  const [mounted, setMounted] = useState(false);
+  const [start, setStart] = useState<number | null>(null);
+  const [now, setNow] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
+    setMounted(true);
+    const s = getOrInitStart();
+    setStart(s);
+    setNow(Date.now());
   }, []);
 
-  const timeLeft = Math.max(0, start + DURATION_MS - now);
+  useEffect(() => {
+    if (start == null) return;
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, [start]);
+
+  const timeLeft = start == null ? 0 : Math.max(0, start + DURATION_MS - now);
   const { hours, minutes, seconds } = formatTimeLeft(timeLeft);
 
   return (
@@ -38,24 +48,24 @@ export function SaleTimerCard() {
         {/* Countdown chips */}
         <div className="mb-4 mt-4 grid w-full max-w-[220px] grid-cols-3 gap-2">
           <div className="rounded-lg bg-white/10 px-3 py-2 text-center">
-            <div className="text-base font-semibold leading-none">
-              {hours.toString().padStart(2, "0")}
+            <div className="text-base font-semibold leading-none" suppressHydrationWarning>
+              {(mounted ? hours : 0).toString().padStart(2, "0")}
             </div>
             <div className="mt-1 text-[10px] uppercase tracking-wide text-white/70">
               Hrs
             </div>
           </div>
           <div className="rounded-lg bg-white/10 px-3 py-2 text-center">
-            <div className="text-base font-semibold leading-none">
-              {minutes.toString().padStart(2, "0")}
+            <div className="text-base font-semibold leading-none" suppressHydrationWarning>
+              {(mounted ? minutes : 0).toString().padStart(2, "0")}
             </div>
             <div className="mt-1 text-[10px] uppercase tracking-wide text-white/70">
               Min
             </div>
           </div>
           <div className="rounded-lg bg-white/10 px-3 py-2 text-center">
-            <div className="text-base font-semibold leading-none">
-              {seconds.toString().padStart(2, "0")}
+            <div className="text-base font-semibold leading-none" suppressHydrationWarning>
+              {(mounted ? seconds : 0).toString().padStart(2, "0")}
             </div>
             <div className="mt-1 text-[10px] uppercase tracking-wide text-white/70">
               Sec
